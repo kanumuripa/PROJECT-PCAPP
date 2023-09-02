@@ -42,7 +42,11 @@ resource "aws_instance" "kubectl" {
     source      = "prometheus-datasource.yaml"
     destination = "/home/ubuntu/prometheus-datasource.yaml"
   }
-
+  
+  provisioner "file" {
+    source      = "rds-deployment/"
+    destination = "/home/ubuntu"
+  }
 
   provisioner "remote-exec" {
     inline = [

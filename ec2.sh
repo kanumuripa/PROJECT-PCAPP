@@ -2,7 +2,7 @@
 
 # Script to install all required softwares and ec2 instance.
 sudo echo "kubectl" >/etc/hostname
-
+sleep 30
 #aws cli installation:
 
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
@@ -29,7 +29,7 @@ sudo ./aws/install
 #Kubectl installation:
 #---------------------
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-
+sleep 30
 sudo install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
 chmod +x kubectl
@@ -52,7 +52,7 @@ curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$
 tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 
 sudo mv /tmp/eksctl /usr/local/bin
-
+sleep 30
 #-----------------------------------------------
 
 curl https://baltocdn.com/helm/signing.asc | gpg --dearmor | sudo tee /usr/share/keyrings/helm.gpg > /dev/null
@@ -68,7 +68,7 @@ sudo apt-get install helm
 #------------------------------
 #Ansible installation
 #------------------------------
-
+sleep 30
 sudo apt update
 
 sudo apt install software-properties-common -y
@@ -78,3 +78,4 @@ sudo add-apt-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible -y
 
 sudo apt install mysql-client -y
+sleep 30
