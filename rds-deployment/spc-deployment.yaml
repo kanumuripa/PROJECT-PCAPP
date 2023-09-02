@@ -24,7 +24,7 @@ spec:
 # below is kubernetes mysql pod
 #              value: "jdbc:mysql://mysql-spc-service/petclinic"
 #Below is using AWS rds mysql DB
-              value: "jdbc:mysql://terraform-20230823151309897500000003.cuja4ksritkx.us-east-1.rds.amazonaws.com:3306/petclinic"
+              value: "jdbc:mysql://spc-db.cuja4ksritkx.us-east-1.rds.amazonaws.com:3306/petclinic"
 #              value: "jdbc:mysql://172.20.112.39/petclinic"
             - name: MYSQL_USER
               valueFrom:
