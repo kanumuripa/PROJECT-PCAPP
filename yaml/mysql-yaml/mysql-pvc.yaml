@@ -1,0 +1,15 @@
+---
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: mysql-pvc
+  labels:
+    app: petclinic
+    tier: mysql
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: gp2 #Default SC created by CSI driver
+  resources:
+    requests:
+      storage: 2Gi

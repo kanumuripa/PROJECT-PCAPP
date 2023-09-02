@@ -1,0 +1,4 @@
+*.terraform*
+ansible.yaml
+EC2-ssh*
+

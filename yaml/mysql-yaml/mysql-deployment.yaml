@@ -1,0 +1,55 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mysql-spc-db
+  labels:
+    app: petclinic
+    tier: mysql
+spec:
+  selector:
+    matchLabels:
+      app: petclinic
+      tier: mysql
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: petclinic
+        tier: mysql
+    spec:
+      containers:
+      - name: spc-mysql
+        image: pkkanumuri/spc-mysql:spc-mysql-2
+        env:
+          - name: MYSQL_ROOT_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-credentials
+                key: root_password
+          - name: MYSQL_USER
+            valueFrom:
+              secretKeyRef:
+                name: mysql-credentials
+                key: username
+          - name: MYSQL_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: mysql-credentials
+                key: password
+          - name: MYSQL_DATABASE
+            valueFrom:
+              secretKeyRef:
+                name: mysql-credentials
+                key: database
+        ports:
+        - name: mysql
+          containerPort: 3306
+        volumeMounts:
+          - name: pvc-mysql
+            mountPath: /var/lib/mysql
+      volumes:
+        - name: pvc-mysql
+          persistentVolumeClaim:
+            claimName: mysql-pvc
