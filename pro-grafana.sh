@@ -3,7 +3,6 @@
 # this script will deploy  both prometheus and grafana deployments and set username and password as admin/admin@321
 ansible-playbook ansible.yaml
 
-sleep 480
 
 aws eks --region us-east-1 update-kubeconfig --name eks-cluster-1
 

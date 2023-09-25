@@ -1,7 +1,7 @@
 # From this instance we can run our kubectl, aws and eksctl commands. I used this to connectivity.
 # Created this to test Private and public subnets. we can test IGW and NAT gateway using below instance.
 resource "aws_instance" "kubectl" {
-  depends_on                  = [aws_eks_cluster.eks-cluster-1, aws_eks_node_group.node-clust-1]
+  depends_on                  = [aws_eks_cluster.eks-cluster-1, aws_eks_node_group.node-clust-1, aws_eks_addon.csi_driver]
   ami                         = "ami-053b0d53c279acc90"
   instance_type               = "t2.micro"
   associate_public_ip_address = true

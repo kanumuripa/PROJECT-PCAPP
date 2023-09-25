@@ -18,3 +18,8 @@ output "private-subnet-1b" {
   value = aws_subnet.private-subnet-1b.id
 
 }
+
+output "rds-endpoint" {
+  value = aws_db_instance.spc-mysql.endpoint
+  
+}
